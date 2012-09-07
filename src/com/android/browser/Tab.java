@@ -1332,6 +1332,11 @@ class Tab implements PictureListener {
      * Destroy the tab's main WebView and subWindow if any
      */
     void destroy() {
+        if (mCapture != null)
+        {
+            mCapture.recycle();
+            mCapture = null;
+        }
         if (mMainView != null) {
             if (mSubView != null)
             {

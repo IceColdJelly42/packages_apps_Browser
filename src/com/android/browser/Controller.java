@@ -1690,6 +1690,10 @@ public class Controller
             case R.id.preferences_menu_id:
                 openPreferences();
                 break;
+                
+            case R.id.exit_menu_id:
+	            mActivity.finish();
+	            break;
 
             case R.id.find_menu_id:
                 findOnPage();

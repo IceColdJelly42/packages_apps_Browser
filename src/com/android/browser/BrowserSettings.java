@@ -196,10 +196,7 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
                     new WebStorageSizeManager.WebKitAppCacheInfo(getAppCachePath()));
             // Workaround b/5254577
             mPrefs.registerOnSharedPreferenceChangeListener(BrowserSettings.this);
-            if (Build.VERSION.CODENAME.equals("REL")) {
-                // This is a release build, always startup with debug disabled
-                setDebugEnabled(false);
-            }
+            setDebugEnabled(true);
             if (mPrefs.contains(PREF_TEXT_SIZE)) {
                 /*
                  * Update from TextSize enum to zoom percent
@@ -455,7 +452,7 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
         edit.putBoolean(PREF_DEBUG_MENU, value);
         if (!value) {
             // Reset to "safe" value
-            edit.putBoolean(PREF_ENABLE_HARDWARE_ACCEL_SKIA, false);
+            edit.putBoolean(PREF_ENABLE_HARDWARE_ACCEL_SKIA, true);
         }
         edit.apply();
     }
@@ -770,7 +767,7 @@ public class BrowserSettings implements OnSharedPreferenceChangeListener,
         if (!isDebugEnabled()) {
             return false;
         }
-        return mPrefs.getBoolean(PREF_JAVASCRIPT_CONSOLE, true);
+        return mPrefs.getBoolean(PREF_JAVASCRIPT_CONSOLE, false);
     }
 
     public boolean isSmallScreen() {

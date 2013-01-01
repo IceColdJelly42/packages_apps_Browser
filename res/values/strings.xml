@@ -1059,9 +1059,9 @@
         <item>25</item>
     </string-array>
     <!-- Title for Restore tabs -->
-    <!--<string name="pref_restore_tabs">Restore tabs</string>-->
+    <string name="pref_restore_tabs">Restore tabs</string>
     <!-- Summary for Restore tabs -->
-    <!--<string name="pref_restore_tabs_summary">Restore tabs on browser launch, either after killing the browser or after reboot</string>-->
+    <string name="pref_restore_tabs_summary">Restore tabs on browser launch, either after killing the browser or after reboot</string>
 
     <!-- Title for tab settings preference -->
     <string name="tab_settings_title">Tab settings</string>

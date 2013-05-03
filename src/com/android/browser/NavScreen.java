@@ -241,43 +241,6 @@ public class NavScreen extends RelativeLayout
         return null;
     }
 
-    private void gotoHomePage() {
-        final Tab tab = findCenteredTab();
-        if (tab != null) {
-            mUiController.setBlockEvents(true);
-            final int tix = mUi.mTabControl.getTabPosition(tab);
-            mScroller.setOnLayoutListener(new OnLayoutListener() {
-                @Override
-                public void onLayout(int l, int t, int r, int b) {
-                    mUi.hideNavScreen(tix, true);
-                    switchToTab(tab);
-                }
-            });
-            mScroller.handleDataChanged(tix);
-            mUiController.setBlockEvents(false);
-            mUiController.loadUrl(tab,
-                    BrowserSettings.getInstance().getHomePage());
-        }
-    }
-
-    private Tab findCenteredTab(){
-        View v = mOrientation == Configuration.ORIENTATION_LANDSCAPE ?
-                mScroller.findViewAt(mSize.y/2, mSize.x/2):
-                mScroller.findViewAt(mSize.x/2, mSize.y/2);
-        if( v != null && v instanceof NavTabView ){
-            Long tabId = ((NavTabView)v).getWebViewId();
-            if( tabId != null ){
-                List<Tab> tabs = mUiController.getTabs();
-                for( int i=0; i<tabs.size(); i++ ){
-                    if( tabs.get(i).getId() == tabId.longValue() ) {
-                        return tabs.get(i);
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
     private void switchToTab(Tab tab) {
         if (tab != mUi.getActiveTab()) {
             mUiController.setActiveTab(tab);
